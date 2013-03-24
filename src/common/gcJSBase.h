@@ -445,28 +445,6 @@ JSDelegateI* newJSFunctionDelegate(TObj* pObj, R(TObj::*func)(Args...), bool bFi
 	return new JSDelegateFunction<R, Args...>(fnCallback, bFirstIsObject);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class DesuraJSBaseNonTemplate : public ChromiumDLL::JavaScriptExtenderI
 {
 public:
@@ -487,15 +465,12 @@ public:
 	}
 
 protected:
-	uint32 find(uint32 hash);
-	uint32 find(uint32 hash, uint32 l, uint32 f);
-
 	gcString m_szRegCode;
 
 private:
 	gcString m_szBindingFile;
 	gcString m_szName;
-	std::vector<std::pair<uint32, JSDelegateI*>> m_mDelegateList;
+	std::map<uint32, JSDelegateI*> m_mDelegateList;
 	ChromiumDLL::JavaScriptContextI* m_pContext;
 };
 
